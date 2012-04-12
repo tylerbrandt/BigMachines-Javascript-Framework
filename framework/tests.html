@@ -77,8 +77,8 @@
 					var ps = hook.pubsub, count = 0, item1 = "a", item2 = "b";
 					function tester(pass1, pass2) {
 						count += 1; 
-						equals(pass1, item1, "properties match");
-						equals(pass2, item2, "properties match");
+						equal(pass1, item1, "properties match");
+						equal(pass2, item2, "properties match");
 					};
 					ps.sub("custom", tester);
 					ps.sub("custom", tester);
@@ -129,17 +129,17 @@
 						};
 					hook.setup.pages.fakepage = fakepage;
 					hook.bootstrap(hook);
-					same(obj.args[0], ["fakepage"], "page tested and require should be called");
+					deepEqual(obj.args[0], ["fakepage"], "page tested and require should be called");
 
 					obj.args = [];
 					fakepage.active = false;
 					hook.bootstrap(hook);
-					same(obj.args, [], "inactive pages should NOT be called");
+					deepEqual(obj.args, [], "inactive pages should NOT be called");
 
 					obj.args = [];
 					hook.setup.pages.fakepage = {always: true, active: true};
 					hook.bootstrap(hook);
-					same(obj.args[0], ["fakepage"], "active pages with 'always' set should be called");
+					deepEqual(obj.args[0], ["fakepage"], "active pages with 'always' set should be called");
 
 					//fix require
 					stub.undo();
@@ -165,8 +165,8 @@
 					});
 					hook.pubsub.sub("found-match", function(name) {
 						start();
-						equals(name, "fakepage", "fakepage called");
-						equals(2, count, "tried multiple tests");
+						equal(name, "fakepage", "fakepage called");
+						equal(2, count, "tried multiple tests");
 					});
 
 					hook.bootstrap(hook);
