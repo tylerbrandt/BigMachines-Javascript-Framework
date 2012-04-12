@@ -206,7 +206,7 @@
 			}
 		});
 		setup.extend("config", {
-			url_regex:["/model_configs.jsp"],
+			url_regex:["/model_configs.jsp", "/commerce/"],
 			match: function() {
         // when adding lines, the model_configs url shows in commerce
 				var conf_form_exists = jQuery("form[name='configurationForm']").length > 0;
